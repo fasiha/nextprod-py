@@ -31,7 +31,7 @@ def nextpow(a: float, x: float):
   assert x > 0 and a > 1
   if x <= 1:
     return 1.0
-  n = math.ceil(math.log(a, x))
+  n = math.ceil(math.log(x, a))
   p = a**(n - 1)
   return p if p >= x else a**n
 
@@ -50,8 +50,8 @@ def nextprod(a: List[int], x: int):
   k = len(a)
   v = [1] * k  # current value of each counter
   mx = [nextpow(ai, x) for ai in a]  # maximum value of each counter
-  v[1] = mx[1]  # start at first case that is >= x
-  p = mx[1]  # initial value of product in this case
+  v[0] = mx[0]  # start at first case that is >= x
+  p = mx[0]  # initial value of product in this case
   best = p
   icarry = 1
 
@@ -60,16 +60,16 @@ def nextprod(a: List[int], x: int):
       best = p if p < best else best  # keep the best found yet
       carrytest = True
       while carrytest:
-        p = p // v[icarry]
-        v[icarry] = 1
+        p = p // v[icarry - 1]
+        v[icarry - 1] = 1
         icarry += 1
-        p *= a[icarry]
-        v[icarry] *= a[icarry]
-        carrytest = v[icarry] > mx[icarry] and icarry < k
+        p *= a[icarry - 1]
+        v[icarry - 1] *= a[icarry - 1]
+        carrytest = v[icarry - 1] > mx[icarry - 1] and icarry < k
       if p < x:
         icarry = 1
     else:
       while p < x:
-        p *= a[1]
-        v[1] *= a[1]
+        p *= a[0]
+        v[0] *= a[0]
   return mx[-1] if mx[-1] < best else best
