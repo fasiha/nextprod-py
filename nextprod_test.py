@@ -16,3 +16,4 @@ def testNextprod():
 if __name__ == '__main__':
   testNexpow()
   testNextprod()
+  print('success')

@@ -37,8 +37,8 @@ def nextpow(a: float, x: float) -> float:
 
 
 def nextprod(a: List[int], x: int) -> int:
-  """Next integer greater than or equal to `n` that can be written as ``\\prod k_i^{p_i}`` for integers
-  ``p_1``, ``p_2``, etc.
+  """Next integer greater than or equal to `x` that can be written as ``\\prod k_i^{a_i}`` for integers
+  ``a_1``, ``a_2``, etc.
   # Examples
   ```jldoctest
   julia> nextprod([2, 3], 105)
