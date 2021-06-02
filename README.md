@@ -11,3 +11,5 @@ A pure-Python direct port of Julia's [nextprod](https://docs.julialang.org/en/v1
 from nextprod import nextprod
 nextprod([2, 3, 5, 7], 1123) # 1125
 ```
+
+**License** Since this is a derivative of Julia MIT-licensed code, this library is also shared under the MIT license.
